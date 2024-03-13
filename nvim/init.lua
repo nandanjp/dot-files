@@ -10,12 +10,5 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-
 require("vim-options")
 require("lazy").setup("plugins")
-
--- setting color theme
-vim.cmd("colorscheme rose-pine")
--- vim.cmd("colorscheme rose-pine-main")
--- vim.cmd("colorscheme rose-pine-moon")
--- vim.cmd("colorscheme rose-pine-dawn")

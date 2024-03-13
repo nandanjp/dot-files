@@ -1,15 +1,11 @@
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function()
-      local config = require("nvim-treesitter.configs")
-      config.setup({
-        ensure_installed = {"bash", "c", "cpp", "css", "dockerfile", "gitignore", "go", "gomod", "haskell", "html", "javascript", "latex", "lua", "markdown_inline", "ocaml", "prisma", "python", "rust", "scala", "svelte", "tsx", "typescript", "vim", "vimdoc", "vue", "yaml"},
-        auto_install = true,
-        highlight = { enable = true },
-        indent = { enable = true },
-      })
-    end
-  }
+  "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",
+  config = function()
+    local config = require("nvim-treesitter.configs")
+    config.setup({
+      ensure_installed = {"c", "cpp", "css", "go", "haskell", "html", "javascript", "lua", "ocaml", "proto", "python", "rust", "scala", "sql", "svelte", "tsx", "typescript", "vim", "vimdoc", "vue"},
+      highlight = { enable = true },
+      indent = { enable = true },  
+    })
+  end
 }
