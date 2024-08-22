@@ -13,13 +13,14 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 [ -f "/Users/nandanpatel/.ghcup/env" ] && source "/Users/nandanpatel/.ghcup/env" # ghcup-env
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 # Plugins
-source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/plugins/zsh-cargo-completion/zsh-cargo-completion.plugin.zsh
 source ~/.zsh/plugins/zsh-haskell/haskell.plugin.zsh
-source ~/.zsh/plugins/calc.plugin.zsh/calc.plugin.zsh
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # Homebrew auto-suggestions
@@ -47,12 +48,36 @@ alias tree='ll --tree --level=2'
 
 # other aliases
 alias vim=nvim
+alias python=python3
 alias zrc="$EDITOR $HOME/.zshrc" #alias to edit zshrc
+alias cargow="cargo watch -q -c -w src/ -x run"
 
 # vi keybind
 bindkey -v
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+#set fzf keybindings
+source <(fzf --zsh)
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt share_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_verify
+setopt appendhistory
+
+eval "$(rbenv init - zsh)"
+alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[[ "$TERM_PROGRAM" == "CodeEditApp_Terminal" ]] && . "/Applications/CodeEdit.app/Contents/Resources/codeedit_shell_integration.zsh"
+
+# Key Bindings
+# completion using arrow keys (based on history)
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
