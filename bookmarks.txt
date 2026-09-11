@@ -1,0 +1,46 @@
+# Bookmarks - saved 2026-09-10 (pre-MacBook migration)
+
+## General
+- https://threejs-journey.com/lessons/what-is-webgl-and-why-use-three-js
+- https://docs.ankiweb.net/background.html
+- https://www.hellointerview.com/learn/system-design/core-concepts/db-indexing
+- https://www.wanikani.com/dashboard
+
+## Japanese
+- https://guidetojapanese.org/learn/grammar/writing
+- https://tadoku.org/japanese/book/45891/#bd-look-inside
+- https://www.livingjapanese.com/
+- https://jimaku.cc/
+- https://github.com/donkuri/lapis
+
+## Home
+- https://www.sebastianaaltonen.com/blog/no-graphics-api
+- https://www.youtube.com/watch?v=t0ZWNh-UXDs
+- https://www.youtube.com/watch?v=m8gV4YZoXUs
+- https://www.youtube.com/watch?v=bXM5wfQsPn0&list=PLA_-EWSPTJcu4i7RFCl_KeGrrz37C4_Oc
+- https://caprover.com/docs/get-started
+
+## Videos
+- https://www.youtube.com/watch?v=NYqJoypFncY
+- https://www.youtube.com/watch?v=Uyr-GogTrls
+- https://www.youtube.com/watch?v=n32qq7Kwzh0
+- https://www.youtube.com/watch?v=kCc8FmEb1nY
+- https://www.youtube.com/watch?v=J2rQTJby8XM
+- https://www.youtube.com/watch?v=9GVqKuTVANE
+- https://www.youtube.com/watch?v=awsH0iq0O1A&t=85s
+- https://www.youtube.com/watch?v=XfpMkf4rD6E
+
+## Sites
+- turbopuffer
+- mubit
+- langchain
+- devin
+- mem0
+- https://www.anthropic.com/engineering/building-effective-agents
+- https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
+- https://developers.openai.com/api/docs/guides/evaluation-best-practices?api-mode=responses
+- https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/
+- https://arxiv.org/pdf/2606.25996
+- https://cameronrwolfe.substack.com/p/rubric-rl
+- https://allenai.org/blog/dr-tulu
+- https://blog.palantir.com/deploying-across-security-domains-449c786d92c0
