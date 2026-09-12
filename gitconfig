@@ -1,0 +1,7 @@
+[user]
+	name = Nandan Patel
+	email = nandan.jp17@gmail.com
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
