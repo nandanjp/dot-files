@@ -201,6 +201,39 @@ compiler, which is fine; the wrapper handles the selection.
 
 ---
 
+### Disk: HLS is installed twice
+
+`hls` lands on this machine twice, and both are legitimate — ghcup's serves the
+terminal, Mason's serves Neovim, and they track different HLS versions
+(2.14.0.0 vs 2.13.0.0). Don't "fix" this by deleting one.
+
+What *is* waste: each copy ships shared libs for **six GHC versions** at roughly
+340 MB apiece, while only one GHC is ever installed. Left alone that's ~3.7 GB,
+most of it unusable.
+
+ghcup has a supported command for its own copy:
+
+```
+$ ghcup gc --hls-no-ghc          # drops libs for GHC versions you don't have
+$ ghcup gc --cache --tmpdirs     # drops installer tarballs already unpacked
+```
+
+Mason's copy has no equivalent. It installs *through* ghcup into an isolated
+prefix (`ghcup install hls <ver> -i "$PWD"`, per its `mason-receipt.json`),
+which ghcup doesn't track, so `gc` can't see it. Trim it by hand — keep only the
+directory matching your installed GHC:
+
+```
+$ M=~/.local/share/nvim/mason/packages/haskell-language-server
+$ ls $M/lib/haskell-language-server-*/lib/      # one dir per GHC version
+$ rm -rf $M/lib/haskell-language-server-*/lib/<unused-version>
+```
+
+Run on 2026-09-12: 3.7 GB → 1.1 GB across both copies. The `bin/` shims for the
+removed versions stay behind and will fail if invoked — harmless, since those
+GHC versions aren't installed either. Reinstalling a GHC means reinstalling its
+HLS libs too (`ghcup install hls` / `:MasonInstall haskell-language-server`).
+
 ## Lua
 
 No system toolchain. `lua_ls` comes from Mason and exists to edit this repo's own

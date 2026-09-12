@@ -1,1 +1,29 @@
+# Global gitignore — ~/.config/git/ignore
+# Picked up automatically; no core.excludesfile setting needed.
+#
+# Scope: things that should never reach ANY repo because they're a property of
+# this machine, not of any project. Project-specific ignores belong in the
+# project's own .gitignore.
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+
+# Editors
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+.netrwhist
+
+# Claude Code local state
 **/.claude/settings.local.json
+
+# direnv
+.envrc.local
