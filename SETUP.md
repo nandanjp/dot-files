@@ -256,16 +256,19 @@ The config asks for `MesloLGS Nerd Font Mono`, installed by Phase 3
 
 Single profile at `~/.claude`, using the default `CLAUDE_CONFIG_DIR`.
 
+Full detail — what's vendored, what isn't, and why — is in
+**[claude/README.md](claude/README.md)**. The short version:
+
 ```
-$ cp ~/scripts/claude/settings.json ~/.claude/settings.json
+$ mkdir -p ~/.claude
+$ cp ~/dotfiles/claude/settings.json ~/.claude/settings.json
 $ git clone git@github.com:nandanjp/claude-skills.git ~/.claude/skills
 ```
 
-Skills live in their own repo, which is why only a `.gitignore` is in the
-snapshot.
+Skills are their own repo, so they are cloned rather than copied.
 
 Plugins: don't copy `installed_plugins.json` — it points at cache directories
-that aren't in the snapshot. Reinstall from the marketplace:
+that aren't in any repo. Reinstall from the marketplace:
 
 ```
 $ claude plugin marketplace add anthropics/claude-plugins-official
@@ -273,15 +276,23 @@ $ claude plugin install gopls-lsp@claude-plugins-official
 $ claude plugin install frontend-design@claude-plugins-official
 ```
 
-Project memory lives at `~/.claude/projects/<slug>/memory/`. The `~/scripts`
-snapshot flattens it to `claude/personal/memory/<slug>/`; restore into the nested
-shape.
+Project memory restores into `~/.claude/projects/<slug>/memory/` — note the
+nesting, which is why it isn't a plain `cp -R`:
+
+```
+$ for d in ~/dotfiles/claude/memory/*/; do
+    slug=$(basename "$d")
+    mkdir -p ~/.claude/projects/"$slug"/memory
+    cp "$d"*.md ~/.claude/projects/"$slug"/memory/
+  done
+```
 
 ```
 $ claude auth login --email nandan.jp17@gmail.com
 ```
 
-**Verify:** in a session, `/plugin` shows both plugins enabled.
+**Verify:** in a session, `/plugin` shows both plugins enabled and `/skills`
+lists 11.
 
 ---
 
