@@ -1,2 +1,0 @@
-- [Rust learning journey](rust-learning-journey.md) — building `parsley` to learn lifetimes/heap/design, not syntax
-- [Scaffold-and-fill format](rust-scaffold-and-fill-format.md) — Claude writes signatures + tests, Nandan writes bodies

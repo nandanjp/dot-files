@@ -14,7 +14,6 @@ session keys.
 | Path | Installs to |
 |---|---|
 | `settings.json` | `~/.claude/settings.json` |
-| `memory/<slug>/` | `~/.claude/projects/<slug>/memory/` |
 
 ### settings.json
 
@@ -23,24 +22,6 @@ Model, theme, and the two enabled plugins. Copy it straight across:
 ```
 $ cp ~/dotfiles/claude/settings.json ~/.claude/settings.json
 ```
-
-### memory
-
-Per-project memories, 13 files across 3 projects. The directory slug is the
-project's absolute path with `/` replaced by `-`, so these only resolve if the
-projects sit at the same paths on the new machine.
-
-```
-$ for d in ~/dotfiles/claude/memory/*/; do
-    slug=$(basename "$d")
-    mkdir -p ~/.claude/projects/"$slug"/memory
-    cp "$d"*.md ~/.claude/projects/"$slug"/memory/
-  done
-```
-
-⚠️ Note the nesting: it's `projects/<slug>/memory/`, **not** `memory/<slug>/`.
-The old `~/scripts` snapshot flattened it the other way, which is why the
-restore isn't a plain `cp -R`.
 
 ## What's not here, and why
 
@@ -89,9 +70,4 @@ not update the repo. To sync back:
 ```
 $ cd ~/dotfiles
 $ cp ~/.claude/settings.json claude/settings.json
-$ for d in ~/.claude/projects/*/; do
-    slug=$(basename "$d")
-    [ -n "$(ls -A "$d/memory" 2>/dev/null)" ] || continue
-    mkdir -p "claude/memory/$slug" && cp "$d"memory/*.md "claude/memory/$slug/"
-  done
 ```
