@@ -8,6 +8,9 @@ the machine, not a historical snapshot.
 Start at **[SETUP.md](SETUP.md)**. It runs top to bottom and defers to
 **[LANGUAGES.md](LANGUAGES.md)** for the language toolchains.
 
+The GitHub repo is `nandanjp/dot-files`, but it is cloned to `~/dotfiles` — every
+path in these docs assumes that location.
+
 ## What's here
 
 | Path | Installs to | Notes |

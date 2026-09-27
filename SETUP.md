@@ -73,7 +73,7 @@ $ ls ~/.zshrc                            # must NOT exist yet — Phase 4 create
 ## Phase 3 — Homebrew bundle
 
 ```
-$ git clone git@github.com:nandanjp/dotfiles.git ~/dotfiles
+$ git clone git@github.com:nandanjp/dot-files.git ~/dotfiles
 $ brew bundle install --file=~/dotfiles/Brewfile
 ```
 
